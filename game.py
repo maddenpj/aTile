@@ -21,3 +21,6 @@ while True:
         if e.type == QUIT:
             sys.exit(0)
 
+        if e.type == MOUSEBUTTONDOWN:
+            if e.button == 1:
+                grid.click(e.pos)

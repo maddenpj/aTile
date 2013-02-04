@@ -7,6 +7,9 @@ class Tile:
         self.rect = rect
         self.color = tuple([randrange(1,255) for x in range(3)] + [0])
 
+    def testClick(self, mousePos):
+        return self.rect.collidepoint(mousePos)
+
     def draw(self, game, surf):
         game.draw.rect(surf, self.color, self.rect)
 
@@ -41,6 +44,10 @@ class Grid:
                 self.tiles.append(Tile(Rect(x,y, self.tileWidth, self.tileHeight)))
 
 
+    def click(self, mousePos):
+        for idx, t in enumerate(self.tiles):
+            if(t.testClick(mousePos)):
+                print 'Tile: ' + str(idx) + ' clicked!'
 
     def draw(self, game, surface):
         for t in self.tiles:
